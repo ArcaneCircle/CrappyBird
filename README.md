@@ -2,7 +2,7 @@
 
 Clone of Flappy Bird game for Webxdc
 
-![CrappyBird Screenshot](https://github.com/DeltaZen/CrappyBird/blob/master/screenshot.png?raw=true)
+![CrappyBird Screenshot](https://github.com/DeltaZen/CrappyBird.xdc/blob/master/screenshot.png?raw=true)
 
 ## Building
 
