@@ -49,26 +49,6 @@ function play_sound(s) {
     }
 }
 
-function getCookie(cname)
-{
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) 
-    {
-	var c = ca[i].trim();
-	if (c.indexOf(name)==0) return c.substring(name.length,c.length);
-    }
-    return "";
-}
-
-function setCookie(cname,cvalue,exdays)
-{
-    var d = new Date();
-    d.setTime(d.getTime()+(exdays*24*60*60*1000));
-    var expires = "expires="+d.toGMTString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
-}
-
 // namespace our game
 var FB = {
     // set up some inital values
@@ -759,21 +739,15 @@ window.GameOver = function(){
 	return medal;
     }
     this.getHighScore = function(){
-	var savedscore = getCookie("highscore");
-	if(savedscore != ""){
-	    var hs = parseInt(savedscore) || 0;
-	    if(hs < FB.score.coins)
-	    {
-		hs = FB.score.coins
-		setCookie("highscore", hs, 999);
-	    }
-	    return hs;
+        var hs = parseInt(window.localStorage.getItem("highscore") || 0);
+        if(hs < FB.score.coins)
+        {
+	    hs = FB.score.coins
+            window.localStorage.setItem("highscore", hs);
+            let info = `${window.webxdc.selfName} scored ${hs} in CrappyBird`;
+            window.webxdc.sendUpdate({payload: {}, info: info}, info);
 	}
-	else
-	{					 
-	    setCookie("highscore", FB.score.coins, 999);
-	    return  FB.score.coins;
-	}
+	return hs;
     }
     this.init = function(){
 	
@@ -787,7 +761,7 @@ window.GameOver = function(){
 	    that.medal.src = 'images/medal_' + m +'.png';
 	    that.replay = new Image();
 	    that.replay.src = "images/replay.png";
-	    that.highscore = that.getHighScore() ;
+	    that.highscore = that.getHighScore();
 	}, 500);
 	
     }
