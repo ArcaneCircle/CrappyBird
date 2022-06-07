@@ -83,9 +83,6 @@ var FB = {
     currentHeight: null,
     canvas: null,
     ctx: null,
-    ua: null,
-    android: null,
-    ios: null,
     gradients: {},
     init: function () {
         var grad;
@@ -104,12 +101,6 @@ var FB = {
         // the canvas context allows us to 
         // interact with the canvas api
         FB.ctx = FB.canvas.getContext('2d');
-        // we need to sniff out android & ios
-        // so we can hide the address bar in
-        // our resize function
-        FB.ua = navigator.userAgent.toLowerCase();
-        FB.android = FB.ua.indexOf('android') > -1 ? true : false;
-        FB.ios = (FB.ua.indexOf('iphone') > -1 || FB.ua.indexOf('ipad') > -1) ? true : false;
 
         // setup some gradients
         grad = FB.ctx.createLinearGradient(0, 0, 0, FB.HEIGHT);
@@ -175,13 +166,6 @@ var FB = {
         // resize the width in proportion
         // to the new height
         FB.currentWidth = FB.currentHeight * FB.RATIO;
-
-        // this will create some extra space on the
-        // page, allowing us to scroll pass
-        // the address bar, and thus hide it.
-        if (FB.android || FB.ios) {
-            document.body.style.height = (window.innerHeight + 50) + 'px';
-        }
 
         // set the new canvas style width & height
         // note: our canvas is still 320x480 but
