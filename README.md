@@ -1,26 +1,19 @@
-CrappyBird
-==========
+# CrappyBird
 
-Clone of Flappy Bird game in JavaScript and Canvas 2D
+Clone of Flappy Bird game for Webxdc
 
+![CrappyBird Screenshot](https://github.com/DeltaZen/CrappyBird/blob/master/screenshot.png?raw=true)
 
-The MIT License
-----
-Copyright (c) 2014 Varun Pant
+## Building
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+```
+pnpm i
+pnpm build
+```
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+A `.xdc` file will be generated in the `dist` folder, then just send it in any chat
+and you should be able to play the game.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+## Credits
 
-**Here are some screen shots**
-
-![Heat map classic theme](https://github.com/varunpant/CrappyBird/blob/master/SS1.PNG?raw=true=50x20)
-![Heat map classic theme](https://github.com/varunpant/CrappyBird/blob/master/SS2.PNG?raw=true=50x20)
-
-![Heat map classic theme](https://github.com/varunpant/CrappyBird/blob/master/SS3.PNG?raw=true=50x20)
-![Heat map classic theme](https://github.com/varunpant/CrappyBird/blob/master/SS4.PNG?raw=true=50x20)
-
-
-Play it [here](http://varunpant.com/resources/CrappyBird/index.html)
+Based on https://github.com/varunpant/CrappyBird
