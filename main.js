@@ -155,9 +155,9 @@ var FB = {
         // we're ready to resize
         FB.resize();
 	FB.changeState("Splash");
-        
-        FB.loop();
 
+        window.highscores.init("CrappyBird");
+        FB.loop();
     },
 
     resize: function () {
@@ -722,21 +722,11 @@ window.GameOver = function(){
 	
 	return medal;
     }
-    this.getHighScore = function(){
-        var hs = parseInt(window.localStorage.getItem("highscore") || 0);
-        if(hs < FB.score.coins)
-        {
-	    hs = FB.score.coins
-            window.localStorage.setItem("highscore", hs);
-            let info = `${window.webxdc.selfName} scored ${hs} in CrappyBird`;
-            window.webxdc.sendUpdate({payload: {}, info: info}, info);
-	}
-	return hs;
-    }
     this.init = function(){
 	
 	var that = this;
 	setTimeout(function() {
+	    window.highscores.setScore(FB.score.coins);
 	    play_sound(soundDie);
 	    that.banner = new Image();
 	    that.banner.src = "images/scoreboard.png";
@@ -745,7 +735,7 @@ window.GameOver = function(){
 	    that.medal.src = 'images/medal_' + m +'.png';
 	    that.replay = new Image();
 	    that.replay.src = "images/replay.png";
-	    that.highscore = that.getHighScore();
+	    that.highscore = window.highscores.getScore();
 	}, 500);
 	
     }
