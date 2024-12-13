@@ -1,3 +1,7 @@
+import "./styles.css";
+
+import "@webxdc/highscores";
+
 /*
   =================================================================
   script: CrappyBird
@@ -22,11 +26,11 @@ window.requestAnimFrame = (function () {
 })();
 //sounds
 
-var soundJump = new Audio("sounds/wing.ogg");
-var soundScore = new Audio("sounds/point.ogg");
-var soundHit = new Audio("sounds/hit.ogg");
-var soundDie = new Audio("sounds/die.ogg");
-var soundSwoosh = new Audio("sounds/swooshing.ogg");
+var soundJump = new Audio("/sounds/wing.ogg");
+var soundScore = new Audio("/sounds/point.ogg");
+var soundHit = new Audio("/sounds/hit.ogg");
+var soundDie = new Audio("/sounds/die.ogg");
+var soundSwoosh = new Audio("/sounds/swooshing.ogg");
 //http://www.storiesinflight.com/html5/audio.html
 var channel_max = 10; // number of channels
 let audiochannels = new Array();
@@ -437,7 +441,7 @@ FB.Pipe = function (x, w) {
 FB.Bird = function () {
 
     this.img = new Image();
-    this.img.src = 'images/bird.png';
+    this.img.src = '/images/bird.png';
     this.gravity = 0.25;
     this.width = 34;
     this.height = 24;
@@ -586,7 +590,7 @@ FB.Collides = function (bird, pipe) {
 window.Splash = function(){
     
     this.banner = new Image();
-    this.banner.src = "images/splash.png";
+    this.banner.src = "/images/splash.png";
     
     this.init = function(){
 	play_sound(soundSwoosh);
@@ -635,7 +639,7 @@ window.Play = function(){
         FB.entities.push(FB.bird);
 	for(var n=0;n<10;n++){
 	    var img = new Image();
-	    img.src = "images/font_small_" + n +'.png';
+	    img.src = "/images/font_small_" + n +'.png';
 	    FB.fonts.push(img);
 	}
 	FB.digits = ["0"];
@@ -729,12 +733,12 @@ window.GameOver = function(){
 	    window.highscores.setScore(FB.score.coins);
 	    play_sound(soundDie);
 	    that.banner = new Image();
-	    that.banner.src = "images/scoreboard.png";
+	    that.banner.src = "/images/scoreboard.png";
 	    var m = that.getMedal();
 	    that.medal =  new Image();
-	    that.medal.src = 'images/medal_' + m +'.png';
+	    that.medal.src = '/images/medal_' + m +'.png';
 	    that.replay = new Image();
-	    that.replay.src = "images/replay.png";
+	    that.replay.src = "/images/replay.png";
 	    that.highscore = window.highscores.getScore();
 	}, 500);
 	
